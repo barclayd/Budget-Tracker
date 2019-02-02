@@ -28,9 +28,9 @@
                         <div class="budget-feedback alert alert-danger text-capitalize">Budget Overview</div>
                         <!-- budget form -->
                         <form id="budget-form" class=" budget-form">
-                            <h5 class="text-capitalize">Monthly Spending Limit</h5>
+                            <h5 class="text-capitalize">Monthly Spending Limit <span id="currency">(£)</span></h5>
                             <div class="form-group">
-                                <input type="number" class="form-control budget-input" id="budget-input">
+                                <input type="number" step="0.01" class="form-control budget-input" id="budget-input">
                             </div>
                             <!-- submit button -->
                             <button type="submit" class="btn text-capitalize budget-submit" id="budget-submit">calculate</button>
@@ -68,7 +68,7 @@
                             <div class="form-group">
                                 <input type="text" class="form-control expense-input" id="expense-input">
                             </div>
-                            <h5 class="text-capitalize">Cost</h5>
+                            <h5 class="text-capitalize">Cost <span id="currency">(£)</span></h5>
                             <div class="form-group">
                                 <input type="number" class="form-control expense-input" id="amount-input">
                             </div>
