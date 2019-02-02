@@ -4,10 +4,12 @@
   --mainGreen: #317b22;
   --mainRed: #b80c09;
   --mainBlue: #05668d;
+  --mainGrey: #696969;
+  --backgroundBlue: #f4f7f7;
 }
 
 body {
-  background: var(--mainWhite);
+  background: var(--backgroundBlue);
   color: var(--mainDark);
   font-family: 'Source Sans Pro', sans-serif;
 
@@ -23,7 +25,7 @@ body {
   font-size: 1.8rem;
   text-align: center;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   color: var(--mainBlue);
 }
 
@@ -31,14 +33,18 @@ body {
   border: 0.15rem solid var(--mainGreen);
   padding: 1rem;
   border-radius: 0.25rem;
-  font-size: 1.2rem;
+}
+
+.budget-form h5,
+.expense-form h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .expense-form {
   border: 0.15rem solid var(--mainRed);
   padding: 1rem;
   border-radius: 0.25rem;
-  font-size: 1.2rem;
 }
 
 .budget-submit {
@@ -65,6 +71,12 @@ body {
 
 .budget-input {
   border: 0.05rem solid var(--mainGreen) !important;
+}
+
+.budget-input,
+.expense-input {
+  background: #fcfcfc;
+
 }
 
 .expense-input {
@@ -99,7 +111,14 @@ body {
 }
 
 .showItem {
-  display: block;
+  display: flex;
+  padding: 0.25rem 1rem 0 2rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.showItem p {
+  margin: 0.5rem 0;
 }
 
 .info-title {
@@ -116,6 +135,10 @@ body {
 .expense,
 .balance {
   font-weight: 700;
+}
+
+#currency {
+  color: var(--mainGrey);
 }
 
 .expense {
