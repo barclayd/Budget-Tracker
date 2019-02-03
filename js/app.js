@@ -10,6 +10,7 @@ class UI {
     this.expenseAmount = document.getElementById("expense-amount");
     this.balance = document.getElementById("balance");
     this.balanceAmount = document.getElementById("balance-amount");
+    this.balanceCurrency = document.getElementById("budget-currency");
     this.expenseForm = document.getElementById("expense-form");
     this.expenseInput = document.getElementById("expense-input");
     this.amountInput = document.getElementById("amount-input");
@@ -20,7 +21,6 @@ class UI {
 
   submitBudgetForm() {
     const value = parseFloat(this.budgetInput.value);
-    console.log(this.budgetInput.value);
     if (this.budgetInput.value === '' || value < 0.01) {
       this.budgetFeedback.classList.add('showItem');
       this.budgetFeedback.innerHTML = `<p> Budget value cannot be negative, empty or 0 </p> `;
@@ -66,14 +66,14 @@ class UI {
     const total = parseFloat(budgetSum - expenses).toFixed(2);
     this.balanceAmount.textContent = total;
     if (total < 0) {
-      this.balanceAmount.classList.remove('showGreen', 'showBlack');
-      this.balanceAmount.classList.add('showRed');
+      this.changeTextColour(this.balanceAmount, 'red');
+      this.changeTextColour(this.balanceCurrency, 'red');
     } else if (total === 0) {
-      this.balanceAmount.classList.remove('showGreen', 'showRed');
-      this.balanceAmount.classList.add('showBlack');
+      this.changeTextColour(this.balanceAmount, 'black');
+      this.changeTextColour(this.balanceCurrency, 'black');
     } else {
-      this.balanceAmount.classList.remove('showBlack', 'showRed');
-      this.balanceAmount.classList.add('showGreen');
+      this.changeTextColour(this.balanceAmount, 'green');
+      this.changeTextColour(this.balanceCurrency, 'green');
     }
   };
 
@@ -135,8 +135,23 @@ class UI {
     this.showBalance();
   }
 
-}
+  changeTextColour(element, colour) {
+    switch (colour) {
+      case 'red':
+        element.classList.remove('showGreen', 'showBlack');
+        element.classList.add('showRed');
+        break;
+      case 'black':
+        element.classList.remove('showGreen', 'showRed');
+        elemnt.classList.add('showBlack');
+        break;
+      case 'green':
+        element.classList.remove('showBlack', 'showRed');
+        element.classList.add('showGreen');
+    }
+  }
 
+}
 
 const eventListeners = () => {
   const budgetForm = document.getElementById('budget-form');
