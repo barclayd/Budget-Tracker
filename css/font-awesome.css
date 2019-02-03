@@ -241,6 +241,10 @@ readers do not read off random characters that represent icons */
   content: "\f09d";
 }
 
+.fa-edit:before {
+  content: "\f044";
+}
+
 .fa-gbp:before {
   content: "\f154";
 }
@@ -255,6 +259,10 @@ readers do not read off random characters that represent icons */
 
 .fa-money-bill-alt:before {
   content: "\f3d1";
+}
+
+.fa-trash:before {
+  content: "\f1f8";
 }
 
 .sr-only {
