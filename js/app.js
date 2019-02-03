@@ -29,7 +29,7 @@ class UI {
       }, 2500);
     } else {
       budgetSum += value;
-      this.budgetAmount.textContent = budgetSum;
+      this.budgetAmount.textContent = budgetSum.toFixed(2);
       this.budgetInput.value = '';
       this.showBalance();
     }
@@ -61,9 +61,9 @@ class UI {
   };
 
   showBalance() {
-    const expenses = this.totalExpenses();
+    const expenses = this.totalExpenses().toFixed(2);
     this.expenseAmount.textContent = expenses;
-    const total = parseFloat(budgetSum - expenses);
+    const total = parseFloat(budgetSum - expenses).toFixed(2);
     this.balanceAmount.textContent = total;
     if (total < 0) {
       this.balanceAmount.classList.remove('showGreen', 'showBlack');
