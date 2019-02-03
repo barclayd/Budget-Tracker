@@ -20,12 +20,13 @@ class UI {
 
   submitBudgetForm() {
     const value = parseFloat(this.budgetInput.value);
-    if (value === '' || value < 0.01) {
+    console.log(this.budgetInput.value);
+    if (this.budgetInput.value === '' || value < 0.01) {
       this.budgetFeedback.classList.add('showItem');
       this.budgetFeedback.innerHTML = `<p> Budget value cannot be negative, empty or 0 </p> `;
       setTimeout(() => {
         this.budgetFeedback.classList.remove('showItem');
-      }, 2000);
+      }, 2500);
     } else {
       budgetSum += value;
       this.budgetAmount.textContent = budgetSum;
@@ -37,12 +38,12 @@ class UI {
   submitExpenseForm() {
     const expenseValue = this.expenseInput.value;
     const amountValue = parseFloat(this.amountInput.value);
-    if (expenseValue === '' || amountValue < 0.01 || amountValue === '') {
+    if (expenseValue === '' || amountValue < 0.01 || this.amountInput.value === '') {
       this.expenseFeedback.classList.add('showItem');
       this.expenseFeedback.innerHTML = `<p>Expense name and cost cannot be empty, negative or 0 </p> `;
       setTimeout(() => {
         this.expenseFeedback.classList.remove('showItem');
-      }, 2000);
+      }, 2500);
     } else {
       this.expenseInput.value = '';
       this.amountInput.value = '';
@@ -82,8 +83,8 @@ class UI {
     div.innerHTML = `
     <div class="expense-item d-flex justify-content-between align-items-baseline">
 
-    <h6 class="expense-title mb-0 text-uppercase list-item">${expense.title}</h6>
-    <h5 class="expense-amount mb-0 list-item">${expense.amount}</h5>
+    <h5 class="expense-title mb-0 text-capitalize list-item">${expense.title}</h5>
+    <h5 class="expense-amount mb-0 list-item"><span>£</span>${expense.amount}</h5>
 
     <div class="expense-icons list-item">
 
@@ -110,19 +111,14 @@ class UI {
   editExpense(element) {
     const id = parseInt(element.dataset.id);
     const parent = element.parentElement.parentElement.parentElement;
-
-    console.log(id);
-    console.log(parent);
     // remove list element from DOM
     this.expenseList.removeChild(parent);
     // get value and filter array of stored expenses
     let expense = this.itemList.filter(item => item.id === id);
     const newExpensesList = this.itemList.filter(item => item.id !== id);
     this.itemList = newExpensesList;
-    console.log(this.itemList);
     this.expenseAmount.textContent = this.totalExpenses();
     this.showBalance();
-    console.log(expense);
     // remove item value from overall expenses sum
     // show previous values in input form
     this.expenseInput.value = expense[0].title;
@@ -152,18 +148,15 @@ const eventListeners = () => {
   // budget form submit
   budgetForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    console.log(event);
     ui.submitBudgetForm();
   });
 
   expenseForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    console.log(event);
     ui.submitExpenseForm();
   });
 
   expenseList.addEventListener('click', (event) => {
-    console.log(event.target.parentElement);
     if (event.target.parentElement.classList.contains('edit-icon')) {
       ui.editExpense(event.target.parentElement);
     }
