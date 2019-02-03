@@ -1,5 +1,4 @@
 let budgetSum = 0;
-let expensesSum = 0;
 
 class UI {
   constructor() {
@@ -45,8 +44,6 @@ class UI {
         this.expenseFeedback.classList.remove('showItem');
       }, 2000);
     } else {
-      expensesSum += parseFloat(amountValue);
-      this.expenseAmount.textContent = expensesSum;
       this.expenseInput.value = '';
       this.amountInput.value = '';
 
@@ -63,8 +60,8 @@ class UI {
   };
 
   showBalance() {
-    console.log('Balance was shown');
     const expenses = this.totalExpenses();
+    this.expenseAmount.textContent = expenses;
     const total = parseFloat(budgetSum - expenses);
     this.balanceAmount.textContent = total;
     if (total < 0) {
@@ -110,7 +107,40 @@ class UI {
     return expensesSum;
   };
 
+  editExpense(element) {
+    const id = parseInt(element.dataset.id);
+    const parent = element.parentElement.parentElement.parentElement;
+
+    console.log(id);
+    console.log(parent);
+    // remove list element from DOM
+    this.expenseList.removeChild(parent);
+    // get value and filter array of stored expenses
+    let expense = this.itemList.filter(item => item.id === id);
+    const newExpensesList = this.itemList.filter(item => item.id !== id);
+    this.itemList = newExpensesList;
+    console.log(this.itemList);
+    this.expenseAmount.textContent = this.totalExpenses();
+    this.showBalance();
+    console.log(expense);
+    // remove item value from overall expenses sum
+    // show previous values in input form
+    this.expenseInput.value = expense[0].title;
+    this.amountInput.value = expense[0].amount;
+
+  }
+
+  deleteExpense(element) {
+    const id = parseInt(element.dataset.id);
+    const parent = element.parentElement.parentElement.parentElement;
+    this.expenseList.removeChild(parent);
+    const newExpensesList = this.itemList.filter(item => item.id !== id);
+    this.itemList = newExpensesList;
+    this.showBalance();
+  }
+
 }
+
 
 const eventListeners = () => {
   const budgetForm = document.getElementById('budget-form');
@@ -132,8 +162,16 @@ const eventListeners = () => {
     ui.submitExpenseForm();
   });
 
-  expenseList.addEventListener('click', () => {
-    console.log(event);
+  expenseList.addEventListener('click', (event) => {
+    console.log(event.target.parentElement);
+    if (event.target.parentElement.classList.contains('edit-icon')) {
+      ui.editExpense(event.target.parentElement);
+    }
+
+    if (event.target.parentElement.classList.contains('delete-icon')) {
+      ui.deleteExpense(event.target.parentElement);
+
+    }
   });
 
 };
