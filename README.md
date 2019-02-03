@@ -14,7 +14,7 @@ A Progressive Web App to track a budget (income and expenses) built using vanill
 
 ### Features
 
--[x] Repsonsive, mobile friendly design that is scalabale
+- [x] Repsonsive, mobile friendly design that is scalabale
 - [x] Add, edit and delete multiple expenses
 - [x] View at ease amount remaining in budget
 - [x] Clear overview of expenditure
