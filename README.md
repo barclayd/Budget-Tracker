@@ -2,6 +2,17 @@
 
 A Progressive Web App to track a budget (income and expenses) built using vanilla JS.
 
+Deployed live: https://budget-tracker-32b25.firebaseapp.com/
+
+
+### Code style
+  [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+    [![js-standard-style](https://img.shields.io/badge/deployed-live-blue.svg)](https://team1-iot.firebaseapp.com/)
+    [![js-standard-style](https://img.shields.io/badge/deployed%20version-1.0.0-green.svg)](https://team1-iot.firebaseapp.com/)
+
+<br />
+
+
 ### Demo
 
 <p align="center">
