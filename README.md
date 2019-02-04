@@ -8,7 +8,7 @@ Deployed live: https://budget-tracker-32b25.firebaseapp.com/
 ### Code style
   [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
     [![js-standard-style](https://img.shields.io/badge/deployed-live-blue.svg)](https://team1-iot.firebaseapp.com/)
-    [![js-standard-style](https://img.shields.io/badge/deployed%20version-1.1.0-green.svg)](https://team1-iot.firebaseapp.com/)
+    [![js-standard-style](https://img.shields.io/badge/deployed%20version-1.1.1-green.svg)](https://team1-iot.firebaseapp.com/)
 
 <br />
 
@@ -18,8 +18,12 @@ Deployed live: https://budget-tracker-32b25.firebaseapp.com/
 <p align="center">
   <img alt="Budget Tracker" src='https://user-images.githubusercontent.com/39765499/52184030-1cd2c280-2806-11e9-8cbc-f40c9acc83b5.gif'>
 
-<img width="624" alt="screenshot 2019-02-03 at 22 39 16" src="https://user-images.githubusercontent.com/39765499/52184031-20fee000-2806-11e9-8f43-408d9975fbf3.png">
-<img width="1194" alt="screenshot 2019-02-03 at 22 39 01" src="https://user-images.githubusercontent.com/39765499/52184032-20fee000-2806-11e9-996c-7f398e7b749e.png">
+<img width="1194" alt="Desktop View" src="https://user-images.githubusercontent.com/39765499/52184032-20fee000-2806-11e9-996c-7f398e7b749e.png">
+
+<img width="624" alt="Mobile View" src="https://user-images.githubusercontent.com/39765499/52184031-20fee000-2806-11e9-8f43-408d9975fbf3.png">
+
+
+<img width="624" alt="Progressive Web App" src="https://user-images.githubusercontent.com/39765499/52185581-d044b280-2818-11e9-9470-b0ef8c90d724.jpg">
 
 </p>
 
