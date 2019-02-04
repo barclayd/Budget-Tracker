@@ -172,6 +172,7 @@ const eventListeners = () => {
   const budgetForm = document.getElementById('budget-form');
   const expenseForm = document.getElementById('expense-form');
   const expenseList = document.getElementById('expense-list');
+  const budgetReset = document.getElementById('budget-reset');
 
   const ui = new UI();
 
@@ -191,9 +192,7 @@ const eventListeners = () => {
 
   if (localStorage.getItem('expensesList') !== null) {
     const historicExpenses = JSON.parse(localStorage.getItem('expensesList'));
-    console.log(historicExpenses);
     for (expense in historicExpenses) {
-      console.log(historicExpenses[expense]);
       ui.addExpense(historicExpenses[expense]);
     }
   }
@@ -207,6 +206,16 @@ const eventListeners = () => {
   expenseForm.addEventListener('submit', (event) => {
     event.preventDefault();
     ui.submitExpenseForm();
+  });
+
+  budgetReset.addEventListener('click', (event) => {
+    event.preventDefault();
+    if (budgetSum > 0) {
+      budgetSum = 0;
+      ui.budgetAmount.textContent = 0;
+      localStorage.removeItem('budgetTotal');
+      ui.showBalance();
+    }
   });
 
   expenseList.addEventListener('click', (event) => {
