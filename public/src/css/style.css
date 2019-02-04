@@ -62,6 +62,19 @@ body {
 .expense-submit:hover {
   background: var(--mainRed);
   color: var(--mainWhite);
+
+}
+
+.reset-submit {
+  background: var(--mainRed);
+  color: var(--mainWhite);
+  border: 0.1rem solid var(--mainRed);
+}
+
+.reset-submit:hover {
+  background: transparent;
+  border: 0.1rem solid var(--mainRed);
+  color: var(--mainRed);
 }
 
 .budget-submit:hover {
