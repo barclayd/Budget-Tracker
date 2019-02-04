@@ -4,7 +4,7 @@
   "description": "A Progressive Web App to track a budget (income and expenses) built using vanilla JS.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server -c-1 -p 8082"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/barclayd/Budget-Tracker/issues"
   },
-  "homepage": "https://github.com/barclayd/Budget-Tracker#readme"
+  "homepage": "https://github.com/barclayd/Budget-Tracker#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
 }
