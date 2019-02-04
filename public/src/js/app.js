@@ -1,5 +1,12 @@
 let budgetSum = 0;
 
+// execute on every page
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/serviceWorker.js')
+    .then(() => {
+      console.log('SW registered');
+    });
+}
 class UI {
   constructor() {
     this.budgetFeedback = document.querySelector(".budget-feedback");
