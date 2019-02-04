@@ -129,6 +129,7 @@ class UI {
     let expense = this.itemList.filter(item => item.id === id);
     const newExpensesList = this.itemList.filter(item => item.id !== id);
     this.itemList = newExpensesList;
+    localStorage.setItem('expensesList', JSON.stringify(this.itemList));
     this.expenseAmount.textContent = this.totalExpenses();
     this.showBalance();
     // remove item value from overall expenses sum
@@ -143,7 +144,9 @@ class UI {
     const parent = element.parentElement.parentElement.parentElement;
     this.expenseList.removeChild(parent);
     const newExpensesList = this.itemList.filter(item => item.id !== id);
+    console.log(newExpensesList);
     this.itemList = newExpensesList;
+    localStorage.setItem('expensesList', JSON.stringify(newExpensesList));
     this.showBalance();
   }
 
