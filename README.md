@@ -30,6 +30,8 @@ Deployed live: https://budget-tracker-32b25.firebaseapp.com/
 - [x] View at ease amount remaining in budget
 - [x] Clear overview of expenditure
 - [x] Clean, crisp high contrast design
+- [x] Progressive Web App with service worker to cache pages for offline mode
+- [x] All data saved and expenses stored on refresh for high usability and true offline mode
 
 ### Future Improvements
 

@@ -1,4 +1,4 @@
-let budgetSum = 0;
+let budgetSum;
 
 // execute on every page
 if ('serviceWorker' in navigator) {
@@ -22,8 +22,8 @@ class UI {
     this.expenseInput = document.getElementById("expense-input");
     this.amountInput = document.getElementById("amount-input");
     this.expenseList = document.getElementById("expense-list");
-    this.itemList = [];
-    this.itemId = 0;
+    this.itemList = (localStorage.getItem('expensesList') !== null ? JSON.parse(localStorage.getItem('expensesList')) : []),
+      this.itemId = (localStorage.getItem('expensesList') !== null ? JSON.parse(localStorage.getItem('expensesList')).length : 0)
   }
 
   submitBudgetForm() {
@@ -36,9 +36,12 @@ class UI {
       }, 2500);
     } else {
       budgetSum += value;
+      localStorage.setItem('budgetTotal', budgetSum);
       this.budgetAmount.textContent = budgetSum.toFixed(2);
       this.budgetInput.value = '';
       this.showBalance();
+      console.log(this.itemList);
+      console.log(this.itemId);
     }
   };
 
@@ -62,6 +65,7 @@ class UI {
       }
       this.itemId++;
       this.itemList.push(expenseObj);
+      localStorage.setItem('expensesList', JSON.stringify(this.itemList));
       this.addExpense(expenseObj);
       this.showBalance();
     }
@@ -69,6 +73,7 @@ class UI {
 
   showBalance() {
     const expenses = this.totalExpenses().toFixed(2);
+    localStorage.setItem('expensesTotal', expenses);
     this.expenseAmount.textContent = expenses;
     const total = parseFloat(budgetSum - expenses).toFixed(2);
     this.balanceAmount.textContent = total;
@@ -166,6 +171,29 @@ const eventListeners = () => {
   const expenseList = document.getElementById('expense-list');
 
   const ui = new UI();
+
+  if (localStorage.getItem('budgetTotal') !== null) {
+    budgetSum = parseFloat(localStorage.getItem('budgetTotal'));
+    ui.budgetAmount.textContent = parseFloat(localStorage.getItem('budgetTotal'));
+    ui.showBalance();
+  } else {
+    budgetSum = 0;
+  }
+
+  // check if previous values exist in storage
+  if (localStorage.getItem('expensesTotal') !== null) {
+    ui.expenseAmount.textContent = parseFloat(localStorage.getItem('expensesTotal'));
+    ui.showBalance();
+  }
+
+  if (localStorage.getItem('expensesList') !== null) {
+    const historicExpenses = JSON.parse(localStorage.getItem('expensesList'));
+    console.log(historicExpenses);
+    for (expense in historicExpenses) {
+      console.log(historicExpenses[expense]);
+      ui.addExpense(historicExpenses[expense]);
+    }
+  }
 
   // budget form submit
   budgetForm.addEventListener('submit', (event) => {
