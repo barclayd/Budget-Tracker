@@ -41,3 +41,4 @@ Deployed live: https://budget-tracker-32b25.firebaseapp.com/
 
 * Option to sort expenditure list in asc/desc using name and cost
 * Options to track multiple income
+* Reset budget at start of each month and provide historic monthly totals
